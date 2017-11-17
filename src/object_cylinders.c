@@ -68,7 +68,7 @@ void		cyl_distance(t_obj *obj, t_ray ray)
 	decompose_b_coef(obj, v, &c);
 	obj->c = vector_dot(c.sub_b, c.sub_b) - obj->radius;
 	obj->d = obj->b * obj->b - (4.0 * obj->a * obj->c);
-	if (obj->d > 0)
+	if (obj->d > 0) //normalement quand discriminant = 0 le polynome admet une unique solution qui est x = - b/2a mais comme apres on fait x1 = (-b-sqrtD)/2a ou x2 = (-b+sqrtD)/2a si D valait 0, sqrtD = 0 donc x1 = (-b+ ou - 0)/2a == x = -b / 2a
 		cyl_intersection_distance(obj, ray);
 	else
 		obj->cross_distance = -1;
