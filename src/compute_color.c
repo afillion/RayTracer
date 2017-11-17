@@ -10,7 +10,7 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "rt.h"
+#include "../includes/rt.h"
 
 void	diffuse_color(t_env *e, t_color obj_c, t_color light_c, double coef)
 {

@@ -10,7 +10,7 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "rt.h"
+#include "../includes/rt.h"
 
 char	*get_xml_tag(char *line, char **ptr, char **tag)
 {

@@ -13,8 +13,8 @@
 #ifndef RT_H
 # define RT_H
 
-# include "libft.h"
-# include "mlx.h"
+# include "../libft/includes/libft.h"
+# include "../SDL2-2.0.5/include/SDL.h"
 # include <stdio.h>
 # include <math.h>
 # include <limits.h>
@@ -37,6 +37,7 @@
 # define OBJ_PLANE	2
 # define OBJ_CYL	3
 # define OBJ_CONE	4
+# define KEY e->event.key.keysym.sym
 
 typedef	struct	s_xml
 {
@@ -106,11 +107,10 @@ typedef struct	s_env
 {
 	char			*scene_file;
 	char			*input;
-	void			*mlx;
-	void			*win;
-	void			*frame_addr;
-	int				*frame;
-	int				**frame_array;
+	SDL_Renderer	*renderer;
+	SDL_Window		*win;
+	SDL_Event		event;
+	int 			run;
 	t_obj			camera;
 	t_light			*lights;
 	t_obj			*objects;
@@ -143,7 +143,7 @@ t_vector		parse_direction(char *content);
 void			draw_screen(t_env *e);
 
 void			get_distance(t_obj *obj, t_ray ray);
-int				compute_objects(t_env *e, t_ray ray);
+void			compute_objects(t_env *e, t_ray ray);
 void			compute_closest_obj(t_env *e, t_obj *closest_obj);
 
 t_vector		vector_new(double x, double y, double z);
@@ -159,7 +159,7 @@ double			vector_magnitude(t_vector v);
 double			vector_dot(t_vector a, t_vector b);
 
 void			quit(char *msg);
-void			init_mlx(t_env *e);
+void			init_sdl(t_env *e);
 void			init_env(t_env *e, char *scene_file);
 
 void			sphere_distance(t_obj *obj, t_ray ray);
@@ -177,5 +177,6 @@ t_vector		cone_normal(t_obj *closest_obj);
 void			diffuse_color(t_env *e, t_color o, t_color l, double coef);
 void			specular_color(t_env *e, t_color light_c, double coef);
 void			plane_color(t_obj *closest_obj);
+void			put_color(t_env *e, int i, int j);
 
 #endif

@@ -10,7 +10,7 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "rt.h"
+#include "../includes/rt.h"
 
 void	compute_light(t_env *e, t_obj *closest_obj, t_light *light, t_ray ray)
 {

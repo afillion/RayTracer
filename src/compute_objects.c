@@ -10,7 +10,7 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "rt.h"
+#include "../includes/rt.h"
 
 void	get_distance(t_obj *obj, t_ray ray)
 {
@@ -26,7 +26,7 @@ void	get_distance(t_obj *obj, t_ray ray)
 		quit("Unexpected object type. Aborting.");
 }
 
-int		compute_objects(t_env *e, t_ray ray)
+void		compute_objects(t_env *e, t_ray ray)
 {
 	t_obj		*obj;
 	t_obj		*closest_obj;
@@ -48,7 +48,5 @@ int		compute_objects(t_env *e, t_ray ray)
 	if (closest_obj)
 	{
 		compute_closest_obj(e, closest_obj);
-		return ((e->color.r << 16) + (e->color.g << 8) + e->color.b);
 	}
-	return (0);
 }

@@ -10,7 +10,7 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "rt.h"
+#include "../includes/rt.h"
 
 void	quit(char *msg)
 {
@@ -31,7 +31,6 @@ int		main(int argc, char **argv)
 	e = (t_env *)ft_memalloc(sizeof(t_env));
 	init_env(e, argv[1]);
 	parser(e);
-	init_mlx(e);
+	init_sdl(e);
 	draw_screen(e);
-	mlx_loop(e->mlx);
 }

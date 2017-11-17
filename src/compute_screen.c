@@ -10,7 +10,13 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "rt.h"
+#include "../includes/rt.h"
+
+void		put_color(t_env *e, int i, int j)
+{
+	SDL_SetRenderDrawColor(e->renderer, e->color.r, e->color.g, e->color.b, 255);
+	SDL_RenderDrawPoint(e->renderer, i, j);
+}
 
 t_vector	pitch_yaw(t_vector v, double pch, double yaw)
 {
@@ -51,10 +57,11 @@ void		draw_screen(t_env *e)
 			ray.ori = e->camera.ori;
 			ray.dir = virtual_screen(i, j);
 			ray.dir = pitch_yaw(ray.dir, e->camera.dir.y, e->camera.dir.x);
-			e->frame_array[j][i] = compute_objects(e, ray);
+			compute_objects(e, ray);
+			put_color(e, i, j);
 			j++;
 		}
 		i++;
 	}
-	mlx_put_image_to_window(e->mlx, e->win, e->frame_addr, 0, 0);
+	SDL_RenderPresent(e->renderer);
 }
