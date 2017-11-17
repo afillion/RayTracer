@@ -90,6 +90,7 @@ typedef struct	s_obj
 	t_vector		ori;
 	t_vector		dir;
 	double			radius;
+	double			hauteur;
 	double			a;
 	double			b;
 	double			c;

@@ -26,6 +26,8 @@ void	add_obj_content(t_obj *obj, char *tag, char *content)
 		obj->radius = parse_angle(content);
 	else if (ft_strequ(tag, "<color>"))
 		obj->color = parse_color(content);
+	else if (ft_strequ(tag, "<hauteur>"))
+		obj->hauteur = parse_radius(content);
 	else
 		quit("Parser : Unknown attribute.");
 }

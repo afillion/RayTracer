@@ -36,6 +36,7 @@
 	<origin>-42, 0, 0</origin>
 	<direction>-0.35, 1, 0</direction>
 	<radius>10</radius>
+	<hauteur>5</hauteur>
 	<color>0xFF, 0x00, 0xFF</color>
 </object>
 

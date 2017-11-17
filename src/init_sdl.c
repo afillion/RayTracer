@@ -63,6 +63,7 @@ void	init_sdl(t_env *e)
 	SDL_SetRenderDrawColor(e->renderer, 0, 0, 0, 255);
 	SDL_RenderClear(e->renderer);
 	e->run = 1;
+	draw_screen(e);
 	wait_event(e);
 	// int	bits;
 	// int	size;
