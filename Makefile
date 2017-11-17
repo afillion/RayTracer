@@ -41,13 +41,22 @@ clean:
 fclean: clean
 	rm -f $(NAME)
 	make fclean -C $(LIBPATH)
-	cd SDL2-2.0.5; \
+
+sdl_clean:
+		cd SDL2-2.0.5; \
 		rm -Rf bin \
 		rm -Rf lib \
 		rm -Rf build \
 		rm -f config.log
 
 re: fclean all
+
+norme:
+					@norminette $(INC_DIR)/*
+					@norminette $(SRC_DIR)/*
+
+.PHONY:				all clean fclean re norme
+
 
 # NAME			=	RTv1
 # PUNCHLINE		=	simulate new universe
@@ -125,9 +134,3 @@ re: fclean all
 # 					# @make -C $(MLX_INC) clean
 
 # re:					fclean all
-
-# norme:
-# 					@norminette $(INC_DIR)/*
-# 					@norminette $(SRC_DIR)/*
-
-# .PHONY:				all clean fclean re norme
